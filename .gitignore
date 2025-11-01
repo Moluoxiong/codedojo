@@ -1,6 +1,3 @@
-# Node.js dependencies
-node_modules/
-
 # System files
 .DS_Store
 
@@ -9,4 +6,11 @@ node_modules/
 
 # Environment files
 .env
+# 忽略依赖文件夹和临时文件
+node_modules
+/client/dist
+npm-debug.log*
 
+# 忽略 WASM 编译时的临时文件
+/client/public/wasm/*.wasm
+/client/public/wasm/*.js.map

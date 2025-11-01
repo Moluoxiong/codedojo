@@ -1,0 +1,16 @@
+// client/package.json
+{
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    // 💡 新添加的脚本：将复杂的 Docker 命令封装起来
+    "build:wasm": "docker run --rm --platform linux/amd64 -v \"$(pwd):/src\" emscripten/emsdk emcc ../temp.cpp -o /src/public/wasm/output.js -s EXPORTED_FUNCTIONS='[\"_main\"]' -s EXPORTED_RUNTIME_METHODS='[\"ccall\",\"cwrap\",\"FS\",\"stringToUTF8\"]' -s ENVIRONMENT='web' -O2"
+  },
+  // ... 其他依赖项
+}
