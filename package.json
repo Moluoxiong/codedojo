@@ -1,0 +1,12 @@
+{
+  "name": "codedojo",
+  "version": "1.0.0",
+  "scripts": {
+    "build:wasm": "docker run --rm --platform linux/amd64 -v \"$(pwd):/src\" emscripten/emsdk emcc temp.cpp -o /src/client/public/wasm/output.js -s EXPORTED_FUNCTIONS='[\"_main\"]' -s EXPORTED_RUNTIME_METHODS='[\"ccall\",\"cwrap\",\"FS\",\"stringToUTF8\"]' -s ENVIRONMENT='web' -O2",
+    "dev": "npm run dev --prefix client"
+  },
+  "dependencies": {
+    "emscripten-wasm-loader": "^3.0.1",
+    "nanoid": "4.0.2"
+  }
+}
